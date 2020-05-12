@@ -24,6 +24,7 @@ import { FavoriteService } from './favorites.service';
     FetchDataComponent,
     EventsComponent,
     EventDetailsComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,7 +33,8 @@ import { FavoriteService } from './favorites.service';
     RouterModule.forRoot([
       //{ path: '', component: AppComponent, pathMatch: 'full' },
       { path: '', component: EventsComponent, pathMatch: 'full' },
-      { path: 'event/:id', component: EventDetailsComponent},
+      { path: 'event/:id', component: EventDetailsComponent },
+      { path: 'favorites', component: FavoritesComponent},
       //{ path: 'favorites', component: FavoritesComponent},
       //{ path: 'counter', component: CounterComponent },
       //{ path: 'fetch-data', component: FetchDataComponent },

@@ -14,11 +14,11 @@ export class FavoriteService {
   }
 
   getFavorites() {
-    return this.http.get<JoinedEvent[]>('/api/favorites/' + this.userID);
+    return this.http.get<JoinedEvent[]>('/api/favorite/');
   }
 
   deleteFavorite(favID: number) {
-    return this.http.delete('/api/favorites/' + favID);
+    return this.http.delete('/api/favorite/' + favID);
   }
 
   postFavorite(eventID: number) {
@@ -27,6 +27,6 @@ export class FavoriteService {
       userID: this.userID,
       eventID: eventID,
     };
-    return this.http.post<Favorite>('/api/favorites', event);
+    return this.http.post<Favorite>('/api/favorite', event);
   }
 }

@@ -28,6 +28,13 @@ namespace UpmeetApp.Controllers
             return result;
         }
 
+        [HttpGet("{id}")]
+        public IEnumerable<JoinedEF> GetJoined(int id)
+        {
+            IEnumerable<JoinedEF> result = dal.GetJoined(id);
+            return result;
+        }
+
         [HttpGet("{id}")] //api/Favorite/id
         public Favorite GetFavoriteByID(int id)
         {

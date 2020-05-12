@@ -89,6 +89,20 @@ namespace UpmeetApp.Models
             return conn.Execute(deleteString, new { id = id });
         }
 
+        public IEnumerable<JoinedEF> GetJoined(int id)
+        {
+            string command = "SELECT e.Title, e.EventDate, e.Description, e.EventLocation ";
+            command += "FROM Events e INNER JOIN Favorites f ON e.EventID = f.EventID WHERE f.UserID=@id";
+
+
+
+            IEnumerable<JoinedEF> result = conn.Query<JoinedEF>(command, new { id = id });
+            return result;
+
+
+
+        }
+
 
 
     }
