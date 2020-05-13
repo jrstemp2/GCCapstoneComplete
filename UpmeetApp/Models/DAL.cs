@@ -53,18 +53,26 @@ namespace UpmeetApp.Models
 
 
         //------------------------------FAVORITES--------------------------------
-        public IEnumerable<Favorite> GetAllFavorites()
+        //public IEnumerable<Favorite> GetAllFavorites()
+        //{
+        //    string queryString = "SELECT * FROM Favorites";
+        //    IEnumerable<Favorite> favorites = conn.Query<Favorite>(queryString);
+        //    return favorites;
+        //}
+
+        public IEnumerable<JoinedEF> GetJoined(int id)
         {
-            string queryString = "SELECT * FROM Favorites";
-            IEnumerable<Favorite> favorites = conn.Query<Favorite>(queryString);
-            return favorites;
+            string command = "SELECT * ";
+            command += "FROM Events e JOIN Favorites f ON e.ID = f.EventID WHERE f.UserID=@id";
+            IEnumerable<JoinedEF> result = conn.Query<JoinedEF>(command, new { id = id });
+            return result;
         }
 
-        public Favorite GetFavoriteByID(int id)
+        public IEnumerable<Favorite> GetFavoritesByID(int id)
         {
-            string queryString = "SELECT * FROM Favorites WHERE ID= @id";
-            Favorite singleFavorite = conn.QueryFirst<Favorite>(queryString, new { id = id });
-            return singleFavorite;
+            string queryString = "SELECT * FROM Favorites WHERE UserID=@id";
+            IEnumerable<Favorite> myFavorite = conn.Query<Favorite>(queryString, new { id = id });
+            return myFavorite;
         }
 
         //Add to favorites
@@ -89,19 +97,7 @@ namespace UpmeetApp.Models
             return conn.Execute(deleteString, new { id = id });
         }
 
-        public IEnumerable<JoinedEF> GetJoined(int id)
-        {
-            string command = "SELECT e.Title, e.EventDate, e.Description, e.EventLocation ";
-            command += "FROM Events e INNER JOIN Favorites f ON e.EventID = f.EventID WHERE f.UserID=@id";
-
-
-
-            IEnumerable<JoinedEF> result = conn.Query<JoinedEF>(command, new { id = id });
-            return result;
-
-
-
-        }
+        
 
 
 

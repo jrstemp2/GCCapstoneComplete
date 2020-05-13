@@ -1,4 +1,39 @@
 <h2>Events</h2>
-<div *ngFor="let event of events">
-  <p><a [routerLink]="['/event', event.id]">{{event.title}}</a> </p>
+
+
+
+<div>
+  <button (click)="showAddForm()" class="addButton">Add Event</button>
+  <div [hidden]="!showForm">
+    <label>Event Title: </label><br /><input type="text" [(ngModel)]="newTitle"/>
+    <br />
+    <label>Event Date: </label><br /><input type="date" [(ngModel)]="newDate"/>
+    <br />
+    <label>Event Description: </label><br /><input type="text" [(ngModel)]="newDescription"/>
+    <br />
+    <label>Event Location: </label><br /><input type="text" [(ngModel)]="newLocation"/>
+    <br />
+    <button (click)="AddNewEvent()">Add Event</button>
+  </div>
+
+
+
+  <table class="eventsTable">
+    <tr>
+      <th>Event</th>
+      <th>Location</th>
+    </tr>
+    <tr *ngFor="let event of events">
+      <td class="regtd">
+        {{event.title}}
+      </td>
+      <td class="regtd">
+        {{event.eventLocation}}
+      </td>
+      <td>
+        <button [routerLink]="['/event', event.id]" class="detailsButton">View Details</button>
+      </td>
+      
+    </tr>
+  </table>
 </div>

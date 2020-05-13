@@ -8,8 +8,6 @@ import { Event } from './interfaces/event';
 export class EventService {
   constructor(private http: HttpClient) {
 
-
-
   }
 
 
@@ -22,5 +20,10 @@ export class EventService {
 
   getEvent(id: number) {
     return this.http.get<Event>(`api/event/${id}`);
+  }
+
+  postEvent(newEvent: Event) {
+    
+    return this.http.post<Event>('/api/event', newEvent);
   }
 }

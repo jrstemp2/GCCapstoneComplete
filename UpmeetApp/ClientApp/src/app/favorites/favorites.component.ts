@@ -32,7 +32,6 @@ export class FavoritesComponent {
     this.favoritesData.getFavorites().subscribe(
       (data: JoinedEvent[]) => {
         this.favorites = data;
-        
       },
       error => console.error(error)
     );

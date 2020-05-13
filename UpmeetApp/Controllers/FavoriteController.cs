@@ -20,27 +20,22 @@ namespace UpmeetApp.Controllers
         }
 
 
-        [HttpGet] //api/Favorite
-        public IEnumerable<Favorite> GetAllFavorites()
-        {
-            IEnumerable<Favorite> result = dal.GetAllFavorites();
-
-            return result;
-        }
-
-        [HttpGet("{id}")]
-        public IEnumerable<JoinedEF> GetJoined(int id)
+        [HttpGet("{id}")] //api/Favorite
+        public IEnumerable<JoinedEF> GetAllFavorites(int id)
         {
             IEnumerable<JoinedEF> result = dal.GetJoined(id);
+
             return result;
         }
 
-        [HttpGet("{id}")] //api/Favorite/id
-        public Favorite GetFavoriteByID(int id)
-        {
-            Favorite result = dal.GetFavoriteByID(id);
-            return result;
-        }
+        
+
+        //[HttpGet("{id}")] //api/Favorite/id
+        //public IEnumerable<Favorite> GetFavoritesByID(int id)
+        //{
+        //    IEnumerable<Favorite> result = dal.GetFavoritesByID(id);
+        //    return result;
+        //}
 
         //Add to favorites
         [HttpPost]

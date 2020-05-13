@@ -1,1 +1,14 @@
-﻿
+.addButton {
+  background-color: lightgreen;
+  color: black;
+  border: none;
+  border-radius: 5px;
+}
+
+.addButton:hover {
+  background-color: green;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px 0 lightgray;
+}

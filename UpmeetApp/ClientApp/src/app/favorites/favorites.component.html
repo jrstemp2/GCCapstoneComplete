@@ -1,5 +1,35 @@
 <h2>Favorites</h2>
-<div *ngFor="let event of favorites">
-  <p>{{event.eventID}}</p>
-  <p>{{event.userID}}</p>
+<div >
+
+  <table class="favsTable">
+    <tr>
+      <th>
+        Event
+      </th>
+      <th>
+        Event Date
+      </th>
+      <th>
+        Event Location
+      </th>
+    </tr>
+    <tr *ngFor="let event of favorites">
+      <td class="regtd">
+        {{event.title}}
+      </td>
+      <td class="regtd">
+        {{event.eventDate}}
+      </td>
+      <td class="regtd"> 
+        {{event.eventLocation}}
+      </td>
+      <td>
+        <button class="deleteButton" (click)="delete(event.id)">Delete Me</button>
+      </td>
+      
+    </tr>
+  </table>
+
+  
+  
 </div>

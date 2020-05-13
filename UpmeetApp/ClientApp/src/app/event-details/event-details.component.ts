@@ -32,4 +32,11 @@ export class EventDetailsComponent implements OnInit{
       );
     })
   }
+
+  add(id: number) {
+    this.favoritesData.postFavorite(id).subscribe(
+      (data: any) => console.log('success! ' + id), //TODO: change the button
+      error => console.error(error)
+    )
+  }
 }

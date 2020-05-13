@@ -10,11 +10,11 @@ export class FavoriteService {
 
 
   constructor(private http: HttpClient) {
-    this.userID = 1;
+    this.userID = 22;
   }
 
   getFavorites() {
-    return this.http.get<JoinedEvent[]>('/api/favorite/');
+    return this.http.get<JoinedEvent[]>('/api/favorite/' + this.userID);
   }
 
   deleteFavorite(favID: number) {
